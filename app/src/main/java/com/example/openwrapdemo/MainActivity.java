@@ -48,12 +48,7 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
-                Bundle bundle = new Bundle();
-                bundle.putBoolean(com.google.ads.mediation.openwrap.AdMobOpenWrapAdapterConstants.ENABLE_RESPONSE_DEBUGGING_KEY, true);
 
-                mAdView = findViewById(R.id.adView);
-                AdRequest adRequest = new AdRequest.Builder().addCustomEventExtrasBundle(com.google.ads.mediation.openwrap.AdMobOpenWrapBannerCustomEventAdapter.class,bundle).build();
-                mAdView.loadAd(adRequest);
             }
         });
 
@@ -66,6 +61,19 @@ public class MainActivity extends AppCompatActivity {
                         // Error will be non-null if ad inspector closed due to an error.
                     }
                 });
+            }
+        });
+
+        Button button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(com.google.ads.mediation.openwrap.AdMobOpenWrapAdapterConstants.ENABLE_RESPONSE_DEBUGGING_KEY, true);
+
+                mAdView = findViewById(R.id.adView);
+                AdRequest adRequest = new AdRequest.Builder().addCustomEventExtrasBundle(com.google.ads.mediation.openwrap.AdMobOpenWrapBannerCustomEventAdapter.class,bundle).build();
+                mAdView.loadAd(adRequest);
             }
         });
     }
